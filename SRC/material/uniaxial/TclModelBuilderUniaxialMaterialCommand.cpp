@@ -186,6 +186,7 @@ extern void *OPS_Trilinwp(void);
 extern void *OPS_Trilinwp2(void);
 extern void *OPS_Masonryt(void);
 extern void *OPS_DowelType(void);
+extern void *OPS_multiSurfaceKinematicHardening(void);
 
 //extern int TclCommand_ConfinedConcrete02(ClientData clientData, Tcl_Interp *interp, int argc, 
 //					 TCL_Char **argv, TclModelBuilder *theTclBuilder);
@@ -2903,20 +2904,28 @@ TclModelBuilderUniaxialMaterialCommand (ClientData clientData, Tcl_Interp *inter
     else if (strcmp(argv[1],"AxialSpHD") == 0) { 
       return TclCommand_AxialSpHD(clientData, interp, argc, argv);
     }
-    if (strcmp(argv[1], "HystereticPoly") == 0) {		// BEGIN Salvatore Sessa 14-Jan-2021 Mail: salvatore.sessa2@unina.it
+    else if (strcmp(argv[1], "HystereticPoly") == 0) {		// BEGIN Salvatore Sessa 14-Jan-2021 Mail: salvatore.sessa2@unina.it
 	void* theMat = OPS_HystereticPoly();
 	if (theMat != 0)
 		theMaterial = (UniaxialMaterial*)theMat;
 	else
 		return TCL_ERROR;
     }								// END Salvatore Sessa 14-Jan-2021 Mail: salvatore.sessa2@unina.it
-    if (strcmp(argv[1], "DowelType") == 0) {
+    else if (strcmp(argv[1], "DowelType") == 0) {
         void* theMat = OPS_DowelType();
         if (theMat != 0)
             theMaterial = (UniaxialMaterial*)theMat;
         else
             return TCL_ERROR;
     }
+    else if (strcmp(argv[1], "multiSurfaceKinematicHardening") == 0) {
+        void *theMat = OPS_multiSurfaceKinematicHardening();
+        if (theMat != 0)
+            theMaterial = (UniaxialMaterial *)theMat;
+        else
+            return TCL_ERROR;
+    }
+
       // Fedeas
  #if defined(_STEEL2) || defined(OPSDEF_UNIAXIAL_FEDEAS)
     if (theMaterial == 0)

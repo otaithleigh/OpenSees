@@ -27,6 +27,7 @@ target_sources(OPS_Material
       IMKPeakOriented.cpp
       IMKPinching.cpp
       MaterialState.cpp
+      multiSurfaceKinematicHardening.cpp
       OriginCentered.cpp
       ParallelMaterial.cpp
       ResilienceLow.cpp
@@ -56,6 +57,7 @@ target_sources(OPS_Material
       IMKPeakOriented.h
       IMKPinching.h
       MaterialState.h
+      multiSurfaceKinematicHardening.h
       OriginCentered.h
       ParallelMaterial.h
       ResilienceLow.h
@@ -312,6 +314,3 @@ add_subdirectory(PY)
 add_subdirectory(snap)
 add_subdirectory(fedeas)
 add_subdirectory(drain)
-
-
-

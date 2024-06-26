@@ -182,6 +182,7 @@ void* OPS_IMKPinching();
 void* OPS_IMKPeakOriented();
 void* OPS_SLModel();
 void* OPS_SMAMaterial();
+void* OPS_multiSurfaceKinematicHardening();
 
 void* OPS_ArctangentBackbone();
 void* OPS_BilinearBackbone();
@@ -359,6 +360,7 @@ namespace {
 	uniaxialMaterialsMap.insert(std::make_pair("SMA", &OPS_SMAMaterial));	
 	uniaxialMaterialsMap.insert(std::make_pair("HystereticPoly", &OPS_HystereticPoly)); // Salvatore Sessa 14-Jan-2021 Mail: salvatore.sessa2@unina.it
 	uniaxialMaterialsMap.insert(std::make_pair("DowelType", &OPS_DowelType));
+	uniaxialMaterialsMap.insert(std::make_pair("multiSurfaceKinematicHardening", &OPS_multiSurfaceKinematicHardening));
 
 	return 0;
     }
