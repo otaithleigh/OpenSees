@@ -152,6 +152,8 @@ extern void *OPS_PFEMElement2DBubble(const ID &info);
 extern void *OPS_PFEMElement2Dmini(const ID &info);
 extern void *OPS_PFEMElement2D();
 extern void* OPS_InertiaTrussElement(void);     //Added by Xiaodong Ji, Yuhao Cheng, Yue Yu
+extern void *OPS_inerterTruss2d();
+extern void *OPS_clutchInerterTruss2d();
 
 #if defined(_HAVE_LHNMYS) || defined(OPSDEF_ELEMENT_LHNMYS)
 extern void* OPS_BeamColumn2DwLHNMYS(void);
@@ -1582,6 +1584,26 @@ TclModelBuilderElementCommand(ClientData clientData, Tcl_Interp *interp,
       }
   }
   
+  else if (strcmp(argv[1], "inerterTruss2d") == 0) {
+      void* theEle = OPS_inerterTruss2d();
+      if (theEle != 0)
+          theElement = (Element*)theEle;
+      else {
+          opserr << "TclElementCommand -- unable to create element of type : " << argv[1] << endln;
+          return TCL_ERROR;
+      }
+  }
+
+  else if (strcmp(argv[1], "clutchInerterTruss2d") == 0) {
+      void* theEle = OPS_clutchInerterTruss2d();
+      if (theEle != 0)
+          theElement = (Element*)theEle;
+      else {
+          opserr << "TclElementCommand -- unable to create element of type : " << argv[1] << endln;
+          return TCL_ERROR;
+      }
+  }
+
   // if one of the above worked
   if (theElement != 0) {
     if (theTclDomain->addElement(theElement) == false) {

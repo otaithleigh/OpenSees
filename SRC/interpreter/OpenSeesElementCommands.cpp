@@ -232,6 +232,8 @@ void* OPS_RockingBC();
 void* OPS_InertiaTrussElement();
 void *OPS_ASDAbsorbingBoundary2D(void);
 void *OPS_ASDAbsorbingBoundary3D(void);
+void* OPS_inerterTruss2d();
+void* OPS_clutchInerterTruss2d();
 
 namespace {
 
@@ -695,6 +697,8 @@ namespace {
 	functionMap.insert(std::make_pair("InertiaTruss", &OPS_InertiaTrussElement));
 	functionMap.insert(std::make_pair("ASDAbsorbingBoundary2D", &OPS_ASDAbsorbingBoundary2D));
 	functionMap.insert(std::make_pair("ASDAbsorbingBoundary3D", &OPS_ASDAbsorbingBoundary3D));
+	functionMap.insert(std::make_pair("inerterTruss2d", &OPS_inerterTruss2d));
+	functionMap.insert(std::make_pair("clutchInerterTruss2d", &OPS_clutchInerterTruss2d));
 	return 0;
     }
 }
